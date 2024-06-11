@@ -35,6 +35,9 @@
                     <label for="inp-total-books">Total de libros:
                         <input id="inp-total-books" name="inp-total-books" type="text" readonly>
                     </label>
+                    <label for="inp-total-palabras">Total de palabras:
+                        <input id="inp-total-palabras" name="inp-total-palabras" type="number" readonly>
+                    </label>
                 </form>
             </div>
             <div class="tab-pane fade" id="pills-newbook" role="tabpanel" aria-labelledby="pills-newbook-tab"
@@ -53,6 +56,11 @@
                     <div class="form-row mb-3">
                         <label for="inp-pages">Páginas:
                             <input id="inp-pages" name="inp-pages" type="number" min="1" required>
+                        </label>
+                    </div>
+                    <div class="form-row mb-3">
+                        <label for="inp-words">Palabras:
+                            <input id="inp-words" name="inp-words" type="number" min="1">
                         </label>
                     </div>
                     <div class="d-none mb-3" id="add-book-error">

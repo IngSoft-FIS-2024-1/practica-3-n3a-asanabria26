@@ -29,18 +29,38 @@ describe('Book', () => {
   });
 
   it('check author is a string', () => {
-    // TODO
+    expect(() => myBook = new Book('titulo', 350, 350)).toThrow();
   });
 
   it('check page param is a number', () => {
-    // TODO
+    expect(() => myBook = new Book('titulo', 'autor', '350')).toThrow();
   });
 
   it('check pages not < 1', () => {
-    // TODO
+    expect(() => myBook = new Book('titulo', 'autor', -1)).toThrow();
   });
   it('toString()', () => {
-    // TODO
+    myBook.setWords(100);
+    expect(myBook.toString()).toBe('Título: Cuentos de la Selva Autor: Horacio Quiroga Páginas: 350 Palabras: 100');
+  });
+
+  it('check words param is a number', () => {
+    myBook.setAuthor('    ');
+    expect(myBook.getAuthor()).toBe('Anónimo');
+  });
+
+  it('check words', () => {
+    myBook.setWords(100);
+    expect(myBook.getWords()).toBe(100);
+  });
+
+  it('check words wrong', () => {
+    expect(() => myBook.setWords('hola')).toThrow();
+  });
+
+  it('check words', () => {
+    myBook.setWords(35000);
+    expect(myBook.wordsPerPage()).toBe(100);
   });
 
 });

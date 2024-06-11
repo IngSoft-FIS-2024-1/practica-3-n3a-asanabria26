@@ -2,8 +2,11 @@ import Library from './domain/library.js';
 
 const libraryName = document.getElementById('library-name');
 const inpTotalBooks = document.getElementById('inp-total-books');
+const inpTotalPalabras = document.getElementById('inp-total-palabras');
+
 const btnAdd = document.getElementById('btn-add');
 const inpTitle = document.getElementById('inp-title');
+const inpWords = document.getElementById('inp-words');
 const inpAuthor = document.getElementById('inp-author');
 const inpPages = document.getElementById('inp-pages');
 
@@ -12,6 +15,7 @@ libraryName.innerHTML = myLibrary.getName();
 
 function updateTotalBooks() {
   inpTotalBooks.value = myLibrary.totalBooks();
+  inpTotalPalabras.value = myLibrary.totalWords();
 }
 
 function updateInventory() {
@@ -33,7 +37,7 @@ btnAdd.addEventListener('click', () => {
   const bookErrorContainer = document.getElementById('add-book-error');
   const bookError = document.getElementById('add-book-error-msg');
   try {
-    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value));
+    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value), parseInt(inpWords.value));
     clearInputs();
     bookErrorContainer.classList.add('d-none');
     updateInventory();
@@ -49,6 +53,7 @@ function clearInputs() {
   inpTitle.value = '';
   inpAuthor.value = '';
   inpPages.value = '';
+  inpWords.value = '';
 }
 
 updateTotalBooks();

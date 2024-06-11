@@ -1,10 +1,9 @@
 class Book {
-
   #title;
   #author;
   #pages;
   #words;
-  
+
   constructor(title, author, pages) {
     this.setTitle(title);
     this.setAuthor(author);
@@ -24,11 +23,11 @@ class Book {
   }
 
   getWords() {
-    // TODO
+    return this.#words;
   }
 
   setTitle(title) {
-    if (typeof (title) !== 'string') {
+    if (typeof title !== 'string') {
       throw new Error();
     }
     title = title.trim();
@@ -39,37 +38,43 @@ class Book {
   }
 
   setAuthor(author) {
-    if (typeof (author) !== 'string') {
-      throw new Error()
+    if (typeof author !== 'string') {
+      throw new Error();
     }
     author = author.trim();
     if (author.length === 0) {
-      author = "Anónimo";
+      author = 'Anónimo';
     }
     this.#author = author;
   }
 
   setPages(pages) {
-    if (typeof (pages) !== 'number' || isNaN(pages)) {
-      throw new Error()
+    if (typeof pages !== 'number' || isNaN(pages)) {
+      throw new Error();
     }
     if (pages < 1) {
-      throw new Error()
+      throw new Error();
     }
     pages = Math.trunc(pages);
     this.#pages = pages;
   }
 
-  setWords() {
-    // TODO
+  setWords(words) {
+    if (typeof words !== 'number' || isNaN(words)) {
+      throw new Error();
+    }
+    this.#words = words;
   }
 
   wordsPerPage() {
-    // TODO
+    let paginasPromedio = this.getWords() / this.getPages();
+    return paginasPromedio;
   }
 
   toString() {
-    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${this.#pages}`;
+    return `Título: ${this.#title} Autor: ${this.#author} Páginas: ${
+      this.#pages
+    } Palabras: ${this.#words}`;
   }
 }
 
